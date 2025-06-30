@@ -11,17 +11,20 @@ import {
   User,
   Mail,
   MessageSquare,
+  Tag,
 } from "lucide-react";
 
 interface FormData {
   name: string;
   email: string;
+  subject: string;
   message: string;
 }
 
 interface FormErrors {
   name?: string;
   email?: string;
+  subject?: string;
   message?: string;
 }
 
@@ -29,8 +32,10 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -66,6 +71,19 @@ export default function ContactForm() {
     return undefined;
   };
 
+  const validateSubject = (subject: string): string | undefined => {
+    if (!subject.trim()) {
+      return "L'objet est requis";
+    }
+    if (subject.trim().length < 3) {
+      return "L'objet doit contenir au moins 3 caractères";
+    }
+    if (subject.trim().length > 100) {
+      return "L'objet ne peut pas dépasser 100 caractères";
+    }
+    return undefined;
+  };
+
   const validateMessage = (message: string): string | undefined => {
     if (!message.trim()) {
       return "Le message est requis";
@@ -84,10 +102,12 @@ export default function ContactForm() {
 
     const nameError = validateName(formData.name);
     const emailError = validateEmail(formData.email);
+    const subjectError = validateSubject(formData.subject);
     const messageError = validateMessage(formData.message);
 
     if (nameError) newErrors.name = nameError;
     if (emailError) newErrors.email = emailError;
+    if (subjectError) newErrors.subject = subjectError;
     if (messageError) newErrors.message = messageError;
 
     setErrors(newErrors);
@@ -130,6 +150,9 @@ export default function ContactForm() {
       case "email":
         error = validateEmail(value);
         break;
+      case "subject":
+        error = validateSubject(value);
+        break;
       case "message":
         error = validateMessage(value);
         break;
@@ -156,19 +179,20 @@ export default function ContactForm() {
     try {
       // Remplacez ces valeurs par vos propres clés EmailJS
       await emailjs.send(
-        "YOUR_SERVICE_ID", // Remplacez par votre Service ID
-        "YOUR_TEMPLATE_ID", // Remplacez par votre Template ID
+        "service_5hg4j9s",
+        "template_8chsene",
         {
           from_name: formData.name.trim(),
           from_email: formData.email.trim(),
+          subject: formData.subject.trim(),
           message: formData.message.trim(),
           to_name: "Jenovic", // Votre nom
         },
-        "YOUR_PUBLIC_KEY" // Remplacez par votre Public Key
+        "nvK76dcy5koFhhFTU"
       );
 
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
     } catch (error) {
       console.error("Erreur lors de l'envoi:", error);
@@ -181,9 +205,11 @@ export default function ContactForm() {
   const getInputClassName = (fieldName: keyof FormErrors) => {
     const baseClass =
       "w-full p-3 pl-10 bg-white dark:bg-black border rounded-lg focus:ring-2 focus:ring-red-600 outline-none text-gray-900 dark:text-white transition-colors";
+
     const errorClass = errors[fieldName]
       ? "border-red-500"
       : "border-gray-300 dark:border-gray-700";
+
     return `${baseClass} ${errorClass}`;
   };
 
@@ -257,6 +283,33 @@ export default function ContactForm() {
               >
                 <AlertCircle className="w-4 h-4" />
                 {errors.email}
+              </motion.p>
+            )}
+          </div>
+
+          {/* Subject Field */}
+          <div>
+            <div className="relative">
+              <Tag className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Objet du message"
+                value={formData.subject}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={getInputClassName("subject")}
+                maxLength={100}
+              />
+            </div>
+            {errors.subject && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1"
+              >
+                <AlertCircle className="w-4 h-4" />
+                {errors.subject}
               </motion.p>
             )}
           </div>
