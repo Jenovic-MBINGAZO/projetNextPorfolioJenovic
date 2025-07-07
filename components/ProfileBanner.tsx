@@ -170,7 +170,7 @@ export default function ProfileBanner({ onStartClick }: ProfileBannerProps) {
               onClick={onStartClick}
               className="relative bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="relative z-10 flex items-center gap-2 cursor-pointer">
                 Commençons !
                 <motion.span
                   animate={{ x: [0, 5, 0] }}

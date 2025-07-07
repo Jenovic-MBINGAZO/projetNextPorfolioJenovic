@@ -24,7 +24,7 @@ const projects = [
     description:
       "Une plateforme permettant de présenter l'Église, de partager sa vision, et offrant aux membres la possibilité de participer virtuellement aux activités de l'Église.",
     link: "https://eglise-locale-rhema.onrender.com/",
-    image: "/eglise.png",
+    image: "/eglise.PNG",
     technologies: ["React js", "Typscript"],
   },
   {
