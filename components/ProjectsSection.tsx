@@ -6,40 +6,54 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Plateforme de gestion immobilière",
+    title: "Placemafrica",
     description:
-      "Une application permettant aux propriétaires et chercheurs immobiliers de se connecter facilement.",
-    link: "#",
-    image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    title: "Clone de Twitter",
-    description:
-      "Un clone de Twitter permettant aux utilisateurs de partager des posts, interagir et gérer leur profil.",
-    link: "#",
-    image:
-      "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Firebase", "Tailwind CSS"],
+      "Plateforme de recrutement en ligne en RDC permettant aux entreprises de publier des offres et aux candidats de postuler facilement. Intégration d'un système de candidature, d'administration, de messagerie automatique et de vérification des profils.",
+    link: "https://placemafrica.com",
+    image: "/img15.jpg", // Remplace par l'URL réelle de ton image
+    technologies: [
+      "Next.js",
+      "AdonisJS",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "EmailJs",
+    ],
   },
   {
     title: "Site vitrine Église Locale Rhema",
     description:
       "Une plateforme permettant de présenter l'Église, de partager sa vision, et offrant aux membres la possibilité de participer virtuellement aux activités de l'Église.",
-    link: "#",
-    image:
-      "https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["WordPress", "PHP", "MySQL"],
+    link: "https://eglise-locale-rhema.onrender.com/",
+    image: "/eglise.png",
+    technologies: ["React js", "Typscript"],
   },
+  {
+    title: "Plateforme de gestion immobilière",
+    description:
+      "Une application permettant aux propriétaires et chercheurs immobiliers de se connecter facilement.",
+    link: "https://kinshasa-immobilier.onrender.com/",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    technologies: ["React", "Node.js", "Adonis js"],
+  },
+  {
+    title: "Clone de Twitter",
+    description:
+      "Un clone de Twitter permettant aux utilisateurs de partager des posts, interagir et gérer leur profil.",
+    link: "https://clone-tweeter.onrender.com/",
+    image:
+      "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    technologies: ["React", "Tailwind CSS"],
+  },
+
   {
     title: "Mon Portfolio",
     description:
       "Un portfolio présentant mes réalisations, compétences et projets en développement web.",
-    link: "#",
+    link: "https://projet-next-porfolio-jenovic.vercel.app/",
     image:
       "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["Next.js", "TypeScript", "Framer Motion"],
+    technologies: ["Next.js", "TypeScript", "Framer Motion", "EmailJs"],
   },
   {
     title: "Application E-commerce",
@@ -51,14 +65,24 @@ const projects = [
     technologies: ["React Native", "Express.js", "Stripe"],
   },
   {
-    title: "Dashboard Analytics",
+    title: "Gestionnaire de Tâches",
     description:
-      "Un tableau de bord interactif pour visualiser et analyser les données en temps réel.",
-    link: "#",
+      "Une application mobile intuitive pour créer, organiser et suivre facilement vos tâches quotidiennes avec notifications et synchronisation en temps réel.",
+    link: "https://gestiontache-fulu.onrender.com/",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "D3.js", "Node.js"],
+      "https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    technologies: ["React Js", "Node.js", "AdonisJs"],
   },
+
+  // {
+  //   title: "Dashboard Analytics",
+  //   description:
+  //     "Un tableau de bord interactif pour visualiser et analyser les données en temps réel.",
+  //   link: "#",
+  //   image:
+  //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  //   technologies: ["React", "D3.js", "Node.js"],
+  // },
 ];
 
 const containerVariants: Variants = {
@@ -108,7 +132,7 @@ export default function ProjectsSection() {
               key={project.title}
               variants={cardVariants}
               whileHover={{ scale: 1.02 }}
-              className="bg-gray-100 dark:bg-[#1E1E1E] rounded-lg overflow-hidden group relative shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-gray-100 dark:bg-[#1E1E1E]  rounded-lg overflow-hidden group relative shadow-lg hover:shadow-xl transition-shadow"
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -147,6 +171,7 @@ export default function ProjectsSection() {
                   href={project.link}
                   className="inline-flex items-center text-red-600 hover:text-red-500 transition-colors font-medium"
                   whileHover={{ x: 5 }}
+                  target="_blank"
                 >
                   Voir le projet
                   <ExternalLink className="ml-2 w-4 h-4" />

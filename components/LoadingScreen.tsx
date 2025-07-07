@@ -15,7 +15,7 @@ export default function LoadingScreen() {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+      className="fixed inset-0 bg-black z-50 flex items-center justify-center"
     >
       <div className="relative">
         {/* Animated code lines */}
@@ -30,7 +30,7 @@ export default function LoadingScreen() {
                 delay: index * 0.2,
                 ease: "easeOut",
               }}
-              className="font-mono text-sm sm:text-base text-[#101828]"
+              className="font-mono text-sm sm:text-base text-white"
             >
               {line}
             </motion.div>

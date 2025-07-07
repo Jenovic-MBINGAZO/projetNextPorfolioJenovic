@@ -199,8 +199,8 @@ export default function ProfileBanner({ onStartClick }: ProfileBannerProps) {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
           >
             {[
-              { title: "Expérience", value: "+3 ans", icon: "" },
-              { title: "Projets Réalisés", value: "+20 projets", icon: "" },
+              { title: "Expérience", value: "+2 ans", icon: "" },
+              { title: "Projets Réalisés", value: "+15 projets", icon: "" },
               { title: "Technologies", value: "Full Stack", icon: "" },
             ].map((item, index) => (
               <motion.div
@@ -209,7 +209,7 @@ export default function ProfileBanner({ onStartClick }: ProfileBannerProps) {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1.8 + index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-white/80 dark:bg-[#1E1E1E]/80 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                className="bg-white/80 dark:bg-[#1E1E1E]/80 backdrop-blur-sm  p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
               >
                 <div className="text-2xl mb-2">{item.icon}</div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">

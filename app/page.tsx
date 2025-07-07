@@ -195,7 +195,7 @@ export default function HomePage() {
             <p className="text-gray-600 dark:text-gray-300">
               Bienvenue sur mon portfolio ! Je suis un développeur web fullstack
               passionné par la création d&apos;expériences web innovantes et
-              performantes. Avec plus de 3 ans d&apos;expérience, j&apos;ai
+              performantes. Avec plus de 2 ans d&apos;expérience, j&apos;ai
               travaillé sur divers projets allant des applications web complexes
               aux sites vitrines élégants.
             </p>
@@ -214,21 +214,23 @@ export default function HomePage() {
           <div className="flex justify-center space-x-6 mb-6">
             <motion.a
               whileHover={{ scale: 1.2 }}
-              href="#"
+              href="https://github.com/Jenovic-MBINGAZO"
               className="hover:text-red-600 transition-colors"
+              target="_blank"
             >
               <Github />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.2 }}
-              href="#"
+              href="https://www.linkedin.com/in/jenovic-mbingazo-%F0%9F%8E%AF-0454952b0/"
               className="hover:text-red-600 transition-colors"
+              target="_blank"
             >
               <Linkedin />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.2 }}
-              href="#"
+              href="mailto:jenovicnzengu.jn@gmal.com"
               className="hover:text-red-600 transition-colors"
             >
               <Mail />
