@@ -23,10 +23,8 @@ export default function HomePage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      // Scroll to the first section after loading
       scrollToSection("a-propos");
     }, 3000);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -36,7 +34,6 @@ export default function HomePage() {
         setIsMenuOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -47,20 +44,17 @@ export default function HomePage() {
     const element = document.getElementById(sectionId);
     if (element) {
       const elementPosition = element.offsetTop;
-      const offsetPosition = elementPosition - 80; // Adjust for navbar height
+      const offsetPosition = elementPosition - 80;
 
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
       });
 
-      // Add focus ring animation to the section
       element.classList.add("ring-animation");
       setTimeout(() => {
         element.classList.remove("ring-animation");
       }, 1000);
-
-      setIsMenuOpen(false);
     }
   };
 
@@ -111,7 +105,11 @@ export default function HomePage() {
                     return (
                       <motion.a
                         key={item}
-                        onClick={() => scrollToSection(sectionId)}
+                        href={`#${sectionId}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToSection(sectionId);
+                        }}
                         whileHover={{ scale: 1.1 }}
                         className={`cursor-pointer transition-colors relative ${
                           isActive ? "text-red-600" : "hover:text-red-600"
@@ -166,7 +164,12 @@ export default function HomePage() {
                     return (
                       <motion.a
                         key={item}
-                        onClick={() => scrollToSection(sectionId)}
+                        href={`#${sectionId}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToSection(sectionId);
+                          setTimeout(() => setIsMenuOpen(false), 500);
+                        }}
                         className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors ${
                           isActive
                             ? "text-red-600 bg-red-50 dark:bg-red-900/20"
