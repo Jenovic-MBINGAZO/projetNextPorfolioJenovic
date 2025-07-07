@@ -84,7 +84,7 @@ export default function HomePage() {
   ];
 
   return (
-    <ThemeProvider defaultTheme="light">
+    <ThemeProvider defaultTheme="dark">
       <AnimatePresence>{isLoading && <LoadingScreen />}</AnimatePresence>
       <ScrollIndicator />
 
